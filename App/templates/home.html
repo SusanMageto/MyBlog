@@ -52,7 +52,7 @@
             
             <div class="card-body">
              
-              <h5 class="card-title"><a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h5>
+              <h5 class="card-title"><a href="#">{{ post.title }}</a></h5>
 
               <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
               <p>Posted By <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></p>
@@ -60,47 +60,15 @@
               <!-- <p>On <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p> -->
               <p class="card-text">{{ post.content }}</p>
 
+              <button class="btn btn-warning"><a href="{{ url_for('posts.post', post_id=post.id) }}">Read more</a></button>
+
               <!-- comments -->
 
              
           
-                  {% for c in comment %}
-          
-                  <div class="card mt-2  bg-#003566">
-                    <div class="card-body">
-                      <p><i>{{c.comment}} </i></p>
-                    </div>
-                   
-                  </div>
-                  
-                  {% endfor %}
-          
                
 
-              <!-- comment form -->
-
-              <form action="" method="POST">
-                {{ form.hidden_tag() }}
           
-                <div class="form-group">
-                  {{ form.comment.label(class="form-control-label") }}
-                  {% if form.comment.errors %}
-                      {{ form.comment(class="form-control form-control-lg is-invalid") }}
-                      <div class="invalid-feedback">
-                          {% for error in form.comment.errors %}
-                              <span>{{ error }}</span>
-                          {% endfor %}
-                      </div>
-                  {% else %}
-                      {{ form.comment(class="form-control form-control-lg") }}
-                  {% endif %}
-              </div>
-          
-              <div class="form-group mt-4">
-                {{ form.submit(class="btn btn-white") }}
-            </div>
-          
-              </form>
              
             </div>
           </div>

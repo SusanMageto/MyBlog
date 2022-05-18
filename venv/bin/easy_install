@@ -1,4 +1,4 @@
-#!/home/moringa/Documents/Sue-blog/venv/bin/python
+#!/home/moringa/Downloads/BlogSite/Blog-Site/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

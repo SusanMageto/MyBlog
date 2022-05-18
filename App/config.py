@@ -3,7 +3,7 @@ import os
 
 class Config:
     SECRET_KEY = 'MysecretYoucantryguess'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'  # db url 
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///myblog.db'  # db url 
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True

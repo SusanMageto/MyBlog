@@ -8,5 +8,5 @@ from wtforms.validators import DataRequired
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Write blog here ...', validators=[DataRequired()])
-
+    
     submit = SubmitField('Post Blog')

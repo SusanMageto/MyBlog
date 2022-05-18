@@ -1,3 +1,5 @@
+
+  
 from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
@@ -34,7 +36,8 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
-      
+
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -42,12 +45,20 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    comments = db.relationship('Comment',backref='cmt',lazy=True)
+    comments = db.relationship('Comment', backref='article', lazy=True)
+    
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
-      
+
 class Comment(db.Model):
-    id = id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.Text, nullable=False)
+    post = db.relationship('Post',backref=db.backref('post',lazy=True))
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
+
+
+
+    
+
+

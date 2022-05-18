@@ -23,13 +23,50 @@
       <h2 class="article-title">{{ post.title }}</h2>
       <p class="article-content">{{ post.content }}</p>
 
+      
+
       <hr>
 
-   
+      
+      {% for c in comment %}
+          
+      <div class="card mt-2  bg-#fefae0">
+        <div class="card-body">
+          <p><i class="fas fa-reply"></i></p>
+          <p><i>
+            {{c.comment}}
+         </i></p>
+        </div>
+       
+      </div>
+      
+      {% endfor %}
 
 
+
+      <form action="" method="POST">
+        {{ form.hidden_tag() }}
   
-
+        <div class="form-group">
+          {{ form.comment.label(class="form-control-label") }}
+          {% if form.comment.errors %}
+              {{ form.comment(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.comment.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+          {% else %}
+              {{ form.comment(class="form-control form-control-lg") }}
+          {% endif %}
+      </div>
+  
+      <div class="form-group mt-4">
+        {{ form.submit(class="btn btn-white") }}
+    </div>
+  
+      </form>
+      
         </div>
       
       </div>
@@ -60,7 +97,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
+          <form action="{{ url_for('posts.delete_post', post_id=post.id ,comment_id = post.id) }}" method="POST">
             <input class="btn btn-danger" type="submit" value="Delete">
           </form>
         </div>
